@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
   const [user, setUser] = useState([]);
+  const navigate = useNavigate();
 
   const handleAddUser = (event) => {
     event.preventDefault();
-    console.log(user);
+
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -18,6 +20,7 @@ const AddUser = () => {
       .then((data) => {
         toast.success("User Added");
         event.target.reset();
+        navigate('/')
       });
   };
 
@@ -31,10 +34,10 @@ const AddUser = () => {
 
   return (
     <div>
-      <h1 className="text-center text-4xl font-semibold uppercase">add user</h1>
+      <h1 className="page_header">add user</h1>
       <form className="text-center" onSubmit={handleAddUser}>
         <input
-          className="my-3 rounded-lg border border-indigo-800 p-3"
+          className="inputs"
           type="text"
           name="name"
           id="name"
@@ -43,7 +46,7 @@ const AddUser = () => {
         />
         <br />
         <input
-          className="my-3 rounded-lg border border-indigo-800 p-3"
+          className="inputs"
           type="text"
           name="address"
           id="address"
@@ -52,7 +55,7 @@ const AddUser = () => {
         />
         <br />
         <input
-          className="my-3 rounded-lg border border-indigo-800 p-3"
+          className="inputs"
           type="email"
           name="email"
           id="name"
