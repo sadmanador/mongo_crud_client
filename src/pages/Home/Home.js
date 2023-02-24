@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <h1 className="page_header">home</h1>
       {
-        displayUsers.map(user => <DisplayUser key={user._id} user={user}></DisplayUser>)
+        displayUsers.map(user => <DisplayUser key={user._id} user={user} ></DisplayUser>)
       }
     </div>
   );
